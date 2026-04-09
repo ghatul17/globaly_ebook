@@ -4,7 +4,7 @@ import { COUNTRY_MAP } from "../data/countries";
 
 import Hero           from "../components/Hero";
 import TrustBadges    from "../components/TrustBadges";
-import WhySection     from "../components/WhySection";
+import PersuasionSection from "../components/PersuasionSection";
 import EbookSection   from "../components/EbookSection";
 import ProblemSolution from "../components/ProblemSolution";
 import CountryDetails from "../components/CountryDetails";
@@ -28,8 +28,8 @@ export default function CountryPage() {
       {/* 2 ── Trust: top-line stats */}
       <TrustBadges country={country} />
 
-      {/* 3 ── Why: reasons to choose this country */}
-      <WhySection country={country} />
+      {/* 3 ── Why: reasons to download the e-book */}
+      <PersuasionSection country={country.name} />
 
       {/* 4 ── Ebook CTA: guide preview, bullets, download */}
       <EbookSection country={country} />
