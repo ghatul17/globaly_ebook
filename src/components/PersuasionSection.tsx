@@ -45,7 +45,9 @@ export default function PersuasionSection({ country, content = DEFAULT_CONTENT }
             {country ? `WHY ${country.toUpperCase()}` : "WHY DOWNLOAD"}
           </span>
           <h2 className="text-[32px] sm:text-[40px] font-bold text-navy tracking-[-0.02em] max-w-2xl leading-[1.15]">
-            Why you should download this guide — and not miss out.
+            {country 
+              ? `Why students pick ${country} — and don't look back.` 
+              : "Why you should download this guide — and not miss out."}
           </h2>
         </div>
 

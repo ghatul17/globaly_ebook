@@ -209,7 +209,7 @@ export default function HomePage() {
       </section>
 
       {/* ── WHY DOWNLOAD ───────────────────────── */}
-      <PersuasionSection />
+      <PersuasionSection country="Australia" />
 
       {/* ── HOW IT WORKS ─────────────────────── */}
       <div id="how">
