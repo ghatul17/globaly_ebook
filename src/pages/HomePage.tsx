@@ -4,6 +4,7 @@ import { Download, ArrowRight, Globe, BookOpen, ArrowUpRight } from "lucide-reac
 import { COUNTRIES } from "../data/countries";
 import HowItWorks from "../components/HowItWorks";
 import LeadCaptureModal from "../components/LeadCaptureModal";
+import PersuasionSection from "../components/PersuasionSection";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
@@ -206,6 +207,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── WHY DOWNLOAD ───────────────────────── */}
+      <PersuasionSection />
 
       {/* ── HOW IT WORKS ─────────────────────── */}
       <div id="how">
