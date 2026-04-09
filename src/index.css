@@ -3,60 +3,60 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 215 28% 17%;
-    --card: 0 0% 100%;
-    --card-foreground: 215 28% 17%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 28% 17%;
-    --primary: 0 64% 30%; /* #7F1D1D matches HSL(0, 64%, 30%) */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 20% 94%; /* #F2E8E8 approx */
-    --secondary-foreground: 0 64% 30%;
-    --muted: 210 16% 96%;
-    --muted-foreground: 215 16% 47%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 0 64% 30%;
-    --radius: 0.5rem;
-  }
+ :root {
+  --background: 0 0% 100%;
+  --foreground: 215 28% 17%;
+  --card: 0 0% 100%;
+  --card-foreground: 215 28% 17%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 215 28% 17%;
+  --primary: 0 64% 30%; /* #7F1D1D matches HSL(0, 64%, 30%) */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 20% 94%; /* #F2E8E8 approx */
+  --secondary-foreground: 0 64% 30%;
+  --muted: 210 16% 96%;
+  --muted-foreground: 215 16% 47%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 0 64% 30%;
+  --radius: 0.5rem;
+ }
 }
 
 @layer base {
-  * {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background: #ffffff;
-    color: #0f172a;
-  }
+ * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ }
+ html {
+  scroll-behavior: smooth;
+ }
+ body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #ffffff;
+  color: #0f172a;
+ }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  .animate-delay-100 { animation-delay: 100ms; }
-  .animate-delay-200 { animation-delay: 200ms; }
-  .animate-delay-300 { animation-delay: 300ms; }
-  .animate-delay-500 { animation-delay: 500ms; }
+ .text-balance {
+  text-wrap: balance;
+ }
+ .animate-delay-100 { animation-delay: 100ms; }
+ .animate-delay-200 { animation-delay: 200ms; }
+ .animate-delay-300 { animation-delay: 300ms; }
+ .animate-delay-500 { animation-delay: 500ms; }
 
-  .glass {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    background: rgba(255,255,255,0.85);
-    border: 1px solid rgba(255,255,255,0.6);
-  }
+ .glass {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(255,255,255,0.6);
+ }
 
-  .float-card {
-    @apply bg-white rounded-2xl shadow-float;
-  }
+ .float-card {
+  @apply bg-white rounded-2xl shadow-float;
+ }
 }
