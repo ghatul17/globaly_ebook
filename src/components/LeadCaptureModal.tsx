@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import { Download, CheckCircle } from "lucide-react";
+import React, { useState, useRef, useEffect } from "react";
+import { Download, CheckCircle, ChevronDown, Search } from "lucide-react";
 import {
  Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Badge } from "@/components/ui/badge";
 import {
  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
@@ -36,10 +35,110 @@ const COUNTRIES = [
  "China","Vietnam","Philippines","Indonesia","Nigeria","Brazil","Other",
 ];
 
+const COUNTRY_CODES = [
+ { code: "+977", flag: "\u{1F1F3}\u{1F1F5}", name: "Nepal" },
+ { code: "+91",  flag: "\u{1F1EE}\u{1F1F3}", name: "India" },
+ { code: "+880", flag: "\u{1F1E7}\u{1F1E9}", name: "Bangladesh" },
+ { code: "+92",  flag: "\u{1F1F5}\u{1F1F0}", name: "Pakistan" },
+ { code: "+94",  flag: "\u{1F1F1}\u{1F1F0}", name: "Sri Lanka" },
+ { code: "+86",  flag: "\u{1F1E8}\u{1F1F3}", name: "China" },
+ { code: "+84",  flag: "\u{1F1FB}\u{1F1F3}", name: "Vietnam" },
+ { code: "+63",  flag: "\u{1F1F5}\u{1F1ED}", name: "Philippines" },
+ { code: "+62",  flag: "\u{1F1EE}\u{1F1E9}", name: "Indonesia" },
+ { code: "+234", flag: "\u{1F1F3}\u{1F1EC}", name: "Nigeria" },
+ { code: "+55",  flag: "\u{1F1E7}\u{1F1F7}", name: "Brazil" },
+ { code: "+1",   flag: "\u{1F1FA}\u{1F1F8}", name: "United States" },
+ { code: "+44",  flag: "\u{1F1EC}\u{1F1E7}", name: "United Kingdom" },
+ { code: "+61",  flag: "\u{1F1E6}\u{1F1FA}", name: "Australia" },
+ { code: "+64",  flag: "\u{1F1F3}\u{1F1FF}", name: "New Zealand" },
+ { code: "+81",  flag: "\u{1F1EF}\u{1F1F5}", name: "Japan" },
+ { code: "+82",  flag: "\u{1F1F0}\u{1F1F7}", name: "South Korea" },
+ { code: "+49",  flag: "\u{1F1E9}\u{1F1EA}", name: "Germany" },
+ { code: "+33",  flag: "\u{1F1EB}\u{1F1F7}", name: "France" },
+ { code: "+971", flag: "\u{1F1E6}\u{1F1EA}", name: "UAE" },
+ { code: "+966", flag: "\u{1F1F8}\u{1F1E6}", name: "Saudi Arabia" },
+ { code: "+60",  flag: "\u{1F1F2}\u{1F1FE}", name: "Malaysia" },
+ { code: "+65",  flag: "\u{1F1F8}\u{1F1EC}", name: "Singapore" },
+ { code: "+254", flag: "\u{1F1F0}\u{1F1EA}", name: "Kenya" },
+ { code: "+27",  flag: "\u{1F1FF}\u{1F1E6}", name: "South Africa" },
+];
+
+function PhoneCodePicker({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+ const [open, setOpen] = useState(false);
+ const [search, setSearch] = useState("");
+ const ref = useRef<HTMLDivElement>(null);
+ const searchRef = useRef<HTMLInputElement>(null);
+
+ const selected = COUNTRY_CODES.find(c => c.code === value);
+ const filtered = COUNTRY_CODES.filter(c =>
+  c.name.toLowerCase().includes(search.toLowerCase()) || c.code.includes(search)
+ );
+
+ useEffect(() => {
+  const handler = (e: MouseEvent) => {
+   if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+  };
+  document.addEventListener("mousedown", handler);
+  return () => document.removeEventListener("mousedown", handler);
+ }, []);
+
+ useEffect(() => {
+  if (open && searchRef.current) searchRef.current.focus();
+ }, [open]);
+
+ return (
+  <div className="relative" ref={ref}>
+   <button
+    type="button"
+    onClick={() => { setOpen(!open); setSearch(""); }}
+    className="flex h-10 items-center gap-1.5 rounded-lg border border-border bg-white px-3 text-sm text-dark hover:border-neutral-300 transition-colors shrink-0"
+   >
+    <span className="text-base leading-none">{selected?.flag}</span>
+    <span>{selected?.code}</span>
+    <ChevronDown size={12} className="text-meta ml-0.5" />
+   </button>
+   {open && (
+    <div className="absolute top-full left-0 mt-1 z-50 w-64 rounded-xl border border-border bg-white shadow-lg overflow-hidden">
+     <div className="flex items-center gap-2 px-3 py-2 border-b border-border">
+      <Search size={14} className="text-meta shrink-0" />
+      <input
+       ref={searchRef}
+       type="text"
+       placeholder="Search country..."
+       value={search}
+       onChange={e => setSearch(e.target.value)}
+       className="w-full text-sm outline-none bg-transparent placeholder:text-neutral-400"
+      />
+     </div>
+     <div className="max-h-48 overflow-y-auto p-1">
+      {filtered.length === 0 && (
+       <p className="text-xs text-meta px-3 py-2">No results</p>
+      )}
+      {filtered.map(c => (
+       <button
+        key={c.code}
+        type="button"
+        onClick={() => { onChange(c.code); setOpen(false); }}
+        className={`flex items-center gap-2.5 w-full px-3 py-2 rounded-md text-sm text-left transition-colors ${
+         c.code === value ? "bg-brand-50 text-brand-700" : "hover:bg-neutral-50 text-dark"
+        }`}
+       >
+        <span className="text-base leading-none">{c.flag}</span>
+        <span className="flex-1">{c.name}</span>
+        <span className="text-meta text-xs">{c.code}</span>
+       </button>
+      ))}
+     </div>
+    </div>
+   )}
+  </div>
+ );
+}
+
 export default function LeadCaptureModal({ isOpen, onClose, country, ebookTitle, onSuccess }: Props) {
  const [step, setStep] = useState<"form" | "success">("form");
  const [form, setForm] = useState({
-  name: "", email: "", phone: "", currentCountry: "", educationQualification: "",
+  name: "", email: "", phoneCode: "+977", phone: "", currentCountry: "", educationQualification: "",
  });
  const [errors, setErrors] = useState<Record<string, string>>({});
  const [loading, setLoading] = useState(false);
@@ -52,7 +151,7 @@ export default function LeadCaptureModal({ isOpen, onClose, country, ebookTitle,
   if (!form.name.trim()) e.name = "Name is required";
   if (!form.email.trim()) e.email = "Email is required";
   else if (!/\S+@\S+\.\S+/.test(form.email)) e.email = "Enter a valid email";
-  if (form.phone && !/^\+?[\d\s\-()]{7,15}$/.test(form.phone)) e.phone = "Enter a valid phone number";
+  if (form.phone && !/^[\d\s\-()]{7,15}$/.test(form.phone)) e.phone = "Enter a valid phone number";
   return e;
  };
 
@@ -68,7 +167,7 @@ export default function LeadCaptureModal({ isOpen, onClose, country, ebookTitle,
     body: JSON.stringify({
      name: form.name,
      email: form.email,
-     phone: form.phone || null,
+     phone: form.phone ? `${form.phoneCode} ${form.phone}` : null,
      currentCountry: form.currentCountry || null,
      educationQualification: form.educationQualification || null,
      guideCountry: country,
@@ -146,14 +245,17 @@ export default function LeadCaptureModal({ isOpen, onClose, country, ebookTitle,
 
        <div className="space-y-1">
         <Label htmlFor="phone">Phone number</Label>
-        <Input
-         id="phone"
-         type="tel"
-         placeholder="+1 234 567 8900 (optional)"
-         value={form.phone}
-         onChange={e => set("phone")(e.target.value)}
-         className={errors.phone ? "border-red-400 focus:border-red-400 focus:ring-red-100" : ""}
-        />
+        <div className="flex gap-2">
+         <PhoneCodePicker value={form.phoneCode} onChange={set("phoneCode")} />
+         <Input
+          id="phone"
+          type="tel"
+          placeholder="234 567 8900 (optional)"
+          value={form.phone}
+          onChange={e => set("phone")(e.target.value)}
+          className={errors.phone ? "border-red-400 focus:border-red-400 focus:ring-red-100" : ""}
+         />
+        </div>
         {errors.phone && <p className="text-xs text-red-500">{errors.phone}</p>}
        </div>
 
