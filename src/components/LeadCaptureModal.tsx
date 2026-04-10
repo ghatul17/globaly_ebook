@@ -15,7 +15,6 @@ interface Props {
  onClose: () => void;
  country: string;
  ebookTitle: string;
- onSuccess: () => void;
 }
 
 const WEBHOOK_URL = "https://n8n.globalyhub.com/webhook/42485f26-cab1-47ce-83f9-630e95d9f225";
@@ -135,13 +134,20 @@ function PhoneCodePicker({ value, onChange }: { value: string; onChange: (v: str
  );
 }
 
-export default function LeadCaptureModal({ isOpen, onClose, country, ebookTitle, onSuccess }: Props) {
+export default function LeadCaptureModal({ isOpen, onClose, country, ebookTitle }: Props) {
  const [step, setStep] = useState<"form" | "success">("form");
  const [form, setForm] = useState({
   name: "", email: "", phoneCode: "+977", phone: "", currentCountry: "", educationQualification: "",
  });
  const [errors, setErrors] = useState<Record<string, string>>({});
  const [loading, setLoading] = useState(false);
+
+ useEffect(() => {
+  if (isOpen) {
+   setStep("form");
+   setErrors({});
+  }
+ }, [isOpen]);
 
  const set = (key: keyof typeof form) => (val: string) =>
   setForm(prev => ({ ...prev, [key]: val }));
@@ -179,7 +185,6 @@ export default function LeadCaptureModal({ isOpen, onClose, country, ebookTitle,
   } catch { /* proceed anyway */ }
   setLoading(false);
   setStep("success");
-  setTimeout(() => { onSuccess(); onClose(); }, 2500);
  };
 
  const handleOpenChange = (open: boolean) => { if (!open) onClose(); };
@@ -311,11 +316,11 @@ export default function LeadCaptureModal({ isOpen, onClose, country, ebookTitle,
       <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4">
        <CheckCircle className="text-green-500" size={32} />
       </div>
-      <h2 className="text-xl font-bold text-dark mb-2">Guide on its way!</h2>
-      <p className="text-sm text-meta">
-       Check your inbox for your free {country} study guide.
+      <h2 className="text-xl font-bold text-dark mb-2">You'll receive the eBook in your email!</h2>
+      <p className="text-sm text-meta mb-6">
+       We've sent the free {country} study guide to your inbox.
        <br />
-       While you wait  explore the full breakdown below.
+       Please check your email (and spam folder) shortly.
       </p>
      </div>
     )}

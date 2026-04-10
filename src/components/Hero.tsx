@@ -101,7 +101,6 @@ function CostBadge({ country }: { country: CountryData }) {
 
 export default function Hero({ country }: Props) {
  const [modalOpen, setModalOpen] = useState(false);
- const [successRedirect, setSuccessRedirect] = useState(false);
 
  return (
   <section
@@ -211,7 +210,6 @@ export default function Hero({ country }: Props) {
     onClose={() => setModalOpen(false)}
     country={country.name}
     ebookTitle={country.ebook.title}
-    onSuccess={() => setSuccessRedirect(true)}
    />
   </section>
  );

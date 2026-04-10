@@ -84,7 +84,6 @@ export default function EbookSection({ country }: Props) {
     onClose={() => setModalOpen(false)}
     country={country.name}
     ebookTitle={country.ebook.title}
-    onSuccess={() => {}}
    />
   </section>
  );

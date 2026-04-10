@@ -60,7 +60,6 @@ export default function FinalCTA({ country }: Props) {
     onClose={() => setModalOpen(false)}
     country={country.name}
     ebookTitle={country.ebook.title}
-    onSuccess={() => {}}
    />
   </section>
  );

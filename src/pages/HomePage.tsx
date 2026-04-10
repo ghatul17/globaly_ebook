@@ -245,7 +245,6 @@ export default function HomePage() {
     onClose={() => setModalOpen(false)}
     country={selectedCountry.name}
     ebookTitle={selectedCountry.ebook.title}
-    onSuccess={() => {}}
    />
   </>
  );
