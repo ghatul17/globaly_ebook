@@ -16,17 +16,21 @@ export default function FinalCTA({ country }: Props) {
     {/* Country badge */}
     <div className="inline-flex items-center gap-2 bg-white/10 text-white/70 text-sm px-4 py-1.5 rounded-full mb-6">
      <span className="text-xl">{country.flag}</span>
-     <span>Free {country.name} Study Guide</span>
+     <span>Free 2026 Guide · Updated for July Intake</span>
     </div>
 
     {/* Headline */}
-    <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-6">
-     Your journey to {country.name}<br className="hidden sm:block" /> starts with one download.
+    <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
+     Don't Let a Bad Decision<br className="hidden sm:block" /> Cost You $35,000+
     </h2>
 
-    <p className="text-lg text-white/60 max-w-xl mx-auto mb-10 leading-relaxed">
+    <p className="text-lg text-white/60 max-w-xl mx-auto mb-4 leading-relaxed">
      {country.ebook.pages} pages of real information. Visa steps, cost breakdowns,
-     scholarship lists and PR pathways  all free, no fluff.
+     scholarship lists, PR pathways, and the mistakes to avoid — all free, no fluff.
+    </p>
+
+    <p className="text-sm text-amber-400/80 font-medium mb-10">
+     July 2026 intake applications are closing soon. Plan now, not later.
     </p>
 
     {/* CTA buttons */}
@@ -36,7 +40,7 @@ export default function FinalCTA({ country }: Props) {
       className="flex items-center gap-2 bg-white text-dark font-bold px-8 py-4 rounded-lg hover:bg-neutral-100 transition-colors shadow-lg text-base"
      >
       <Download size={20} />
-      Download Free Guide
+      Get My Free {country.name} Guide
      </button>
      <a
       href="https://globaly.app"
@@ -48,10 +52,10 @@ export default function FinalCTA({ country }: Props) {
     </div>
 
     {/* Social proof line */}
-    <div className="flex items-center justify-center gap-6 text-white/40 text-sm">
-     <span>✓ Free forever</span>
-     <span>✓ No credit card</span>
-     <span>✓ 10,000+ downloads</span>
+    <div className="flex items-center justify-center gap-6 text-white/40 text-sm flex-wrap">
+     <span>Free. No credit card.</span>
+     <span>In your inbox in 30 seconds.</span>
+     <span>10,000+ students already have it.</span>
     </div>
    </div>
 

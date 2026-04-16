@@ -117,16 +117,16 @@ const australia: CountryData = {
  ],
 
  ebook: {
-  title: "Australia Study Guide 2025",
-  subtitle: "Everything you need to plan, apply, and arrive  free.",
+  title: "The 2026 Australia Study Guide",
+  subtitle: "Wrong course. Wrong city. Visa rejected. These are avoidable — this free 42-page guide shows you exactly how.",
   bullets: [
-   "Step-by-step student visa (subclass 500) checklist",
-   "Real cost breakdowns by city  Sydney vs Melbourne vs Brisbane",
-   "Top courses with the highest post-grad employment rates",
-   "Work rights explained simply: 48 hrs/fortnight rule",
-   "Graduate visa (485) → PR pathway, explained in plain English",
-   "6 scholarships you can actually win as an international student",
-   "What to pack, what to expect, what no one tells you",
+   "The exact visa (subclass 500) checklist — so your application doesn't get rejected for one missing document",
+   "City-by-city cost comparison — Sydney vs Melbourne vs Brisbane, real numbers, not university marketing",
+   "Courses with actual job demand in 2026 — not just popular ones, the ones employers are hiring for",
+   "The 48-hour work rule explained — how to legally earn while studying without risking your visa",
+   "Graduate visa (485) → PR pathway — the step-by-step route most agents won't explain for free",
+   "6 scholarships you can actually win — not the ones with 50,000 applicants, the ones students overlook",
+   "Intake deadlines + application timeline — so you don't miss July 2026 and wait 6 more months",
   ],
   pages: 42,
  },
@@ -389,7 +389,7 @@ const canada: CountryData = {
  ],
 
  ebook: {
-  title: "Canada Study Guide 2025",
+  title: "Canada Study Guide 2026",
   subtitle: "Visas, costs, cities, and PR  all in one plain-English guide.",
   bullets: [
    "Student Permit application  step by step, no jargon",
@@ -661,7 +661,7 @@ const uk: CountryData = {
  ],
 
  ebook: {
-  title: "UK Study Guide 2025",
+  title: "UK Study Guide 2026",
   subtitle: "Visas, tuition, cities, and work rights  explained simply.",
   bullets: [
    "UK Student Visa  what changed post-Brexit and what it means for you",
@@ -933,7 +933,7 @@ const usa: CountryData = {
  ],
 
  ebook: {
-  title: "USA Study Guide 2025",
+  title: "USA Study Guide 2026",
   subtitle: "F-1 visa, OPT, funding, and everything in between.",
   bullets: [
    "F-1 visa application process  what you actually need to prepare",

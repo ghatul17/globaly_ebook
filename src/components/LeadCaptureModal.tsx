@@ -199,7 +199,7 @@ export default function LeadCaptureModal({ isOpen, onClose, country, ebookTitle 
         <Download className="text-brand-900" size={20} />
        </div>
        <DialogTitle>{ebookTitle}</DialogTitle>
-       <DialogDescription>Free guide. Straight to your inbox. No spam, ever.</DialogDescription>
+       <DialogDescription>42 pages of real information — free, no fluff, in your inbox in 30 seconds.</DialogDescription>
       </DialogHeader>
 
       {/* What's inside */}
@@ -208,10 +208,11 @@ export default function LeadCaptureModal({ isOpen, onClose, country, ebookTitle 
        <div className="space-y-2">
         {/* What's inside bullets */}
         {[
-         "Visa step-by-step checklist",
-         "Real cost breakdown by city",
-         "PR pathway guide",
-         "Top scholarships for 2025",
+         "Visa (subclass 500) checklist — avoid rejection",
+         "City-by-city real cost comparison",
+         "Courses with actual job demand in 2026",
+         "Graduate visa → PR pathway explained",
+         "6 scholarships most students miss",
         ].map((item) => (
          <div key={item} className="flex items-center gap-2 text-sm text-navy">
           <div className="h-4 w-4 bg-accent-400 rounded-full flex items-center justify-center text-[10px] text-white font-bold">✓</div>
@@ -307,7 +308,7 @@ export default function LeadCaptureModal({ isOpen, onClose, country, ebookTitle 
        </Button>
 
        <p className="text-xs text-center text-meta">
-        By downloading, you agree to receive occasional study abroad tips from Globaly APP. Unsubscribe anytime.
+        Join 10,000+ students who planned smarter. Unsubscribe anytime.
        </p>
       </form>
      </>
