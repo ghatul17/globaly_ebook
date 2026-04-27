@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import SEO from "../components/SEO";
 
 export default function TermsPage() {
   useEffect(() => {
@@ -6,6 +7,13 @@ export default function TermsPage() {
   }, []);
 
   return (
+    <>
+    <SEO
+      title="Terms of Service | Globaly"
+      description="Read Globaly's terms of service governing the use of our platform and study abroad guides."
+      canonical="/terms"
+      noindex={true}
+    />
     <div className="pt-32 pb-24 px-4 bg-white">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-extrabold text-[#1E293B] mb-8 tracking-tight">Terms of Service</h1>
@@ -63,5 +71,6 @@ export default function TermsPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

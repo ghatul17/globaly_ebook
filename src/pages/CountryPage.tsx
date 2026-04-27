@@ -1,5 +1,5 @@
-import React from "react";
 import { useParams, Navigate } from "react-router-dom";
+import SEO from "../components/SEO";
 import { COUNTRY_MAP } from "../data/countries";
 
 import Hero      from "../components/Hero";
@@ -18,10 +18,30 @@ export default function CountryPage() {
  const { countryId } = useParams<{ countryId: string }>();
  const country = COUNTRY_MAP[countryId ?? ""] || COUNTRY_MAP["australia"];
 
- if (!country) return <Navigate to="/" replace />; // fallback just in case
+ if (!country) return <Navigate to="/" replace />;
+
+ const countrySchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": country.heroHeadline,
+  "description": country.heroSub,
+  "url": `https://globaly.io/${country.id}`,
+  "publisher": {
+   "@type": "Organization",
+   "name": "Globaly",
+   "url": "https://globaly.io"
+  }
+ };
 
  return (
   <main>
+   <SEO
+    title={`Study in ${country.name} — Complete Guide ${new Date().getFullYear()}`}
+    description={`${country.heroSub} Download your free ${country.name} study guide. Covers costs, visa, work rights, PR pathways and top universities.`}
+    canonical={`/${country.id}`}
+    ogType="article"
+    schema={countrySchema}
+   />
    {/* 1 ── Hero: headline, floating cards, primary CTA */}
    <Hero country={country} />
 

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import SEO from "../components/SEO";
 import { Link } from "react-router-dom";
 import { Download, ArrowRight, Globe, BookOpen, ArrowUpRight } from "lucide-react";
 import { COUNTRIES } from "../data/countries";
@@ -69,8 +70,27 @@ export default function HomePage() {
   setModalOpen(true);
  }
 
+ const homeSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Globaly",
+  "url": "https://globaly.io",
+  "description": "A premium network connecting ambitious students with verified agents and top universities worldwide.",
+  "potentialAction": {
+   "@type": "SearchAction",
+   "target": "https://globaly.io/{search_term_string}",
+   "query-input": "required name=search_term_string"
+  }
+ };
+
  return (
   <>
+   <SEO
+    title="Globaly — Study Abroad Made Simple"
+    description="A premium network connecting ambitious students with verified agents and top universities in Australia, Canada, UK & USA. Free country guides, visa help, and cost breakdowns."
+    canonical="/"
+    schema={homeSchema}
+   />
    {/* ── HERO ─────────────────────────────── */}
    <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-white pt-16">
     {/* Subtle gradient orb */}
