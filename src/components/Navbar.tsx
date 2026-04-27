@@ -33,6 +33,9 @@ export default function Navbar() {
     {/* CTA  desktop */}
     <div className="hidden md:flex items-center gap-2">
      <Button asChild variant="ghost" size="sm" className="text-xs text-neutral-500 hover:text-navy font-medium">
+      <Link to="/blog">Blog</Link>
+     </Button>
+     <Button asChild variant="ghost" size="sm" className="text-xs text-neutral-500 hover:text-navy font-medium">
       <a href="#guides">Free Guides</a>
      </Button>
      <Button asChild size="sm" className="rounded-full px-4 h-8 text-xs font-medium bg-brand-900 hover:bg-brand-800 text-white shadow-sm transition-all">
@@ -57,6 +60,9 @@ export default function Navbar() {
    {/* Mobile menu */}
    {open && (
     <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-neutral-100 px-4 py-4 space-y-2">
+     <Button asChild variant="ghost" className="w-full justify-start text-sm hover:bg-brand-50 hover:text-brand-900">
+      <Link to="/blog">Blog</Link>
+     </Button>
      <Button asChild variant="ghost" className="w-full justify-start text-sm hover:bg-brand-50 hover:text-brand-900">
       <a href="#guides">Free Guides</a>
      </Button>
