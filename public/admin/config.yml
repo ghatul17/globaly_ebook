@@ -6,7 +6,7 @@ backend:
   branch: main
   auth_endpoint: /api/auth
 
-site_url: https://globaly.io
+site_url: https://guide.globaly.app
 media_folder: public/images/blog
 public_folder: /images/blog
 
